@@ -34,7 +34,22 @@ class App extends Component {
     // In order to not the change the state directly,
     // we create this copy of counters[index]
     counters[index].value++;
-    this.setState({ counters });
+    return this.setState({ counters });
+  };
+
+  handleAddToALL = () => {
+    const counters = [...this.state.counters];
+    for (let index in counters) {
+      counters[index].value++;
+    }
+    return this.setState({ counters });
+  };
+
+  handleNewCounter = () => {
+    const counters = [...this.state.counters];
+    counters.push({ id: counters.length + 1, value: 0 });
+
+    return this.setState({ counters });
   };
 
   render() {
@@ -49,6 +64,8 @@ class App extends Component {
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
+            onAddToAll={this.handleAddToALL}
+            onNewCounter={this.handleNewCounter}
           />
         </main>
       </React.Fragment>
