@@ -39,9 +39,7 @@ class App extends Component {
 
   handleAddToALL = () => {
     const counters = [...this.state.counters];
-    for (let index in counters) {
-      counters[index].value++;
-    }
+    for (let index in counters) counters[index].value++;
     return this.setState({ counters });
   };
 
